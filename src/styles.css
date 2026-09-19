@@ -1,0 +1,211 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * بِسَّة design system — dark warm cat directory.
+ * All colors are oklch semantic tokens. Never hardcode colors in components.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --font-sans: "Tajawal", system-ui, sans-serif;
+  --font-display: "Cairo", "Tajawal", system-ui, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-hero: var(--hero);
+  --color-chip: var(--chip);
+  --color-chip-foreground: var(--chip-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary-strong: var(--primary-strong);
+  --color-chip-hover: var(--chip-hover);
+  --color-card-border: var(--card-border);
+  --color-card-muted: var(--card-muted);
+  --color-card-chip: var(--card-chip);
+  --color-rare: var(--rare);
+  --color-rare-strong: var(--rare-strong);
+  --color-rare-soft: var(--rare-soft);
+  --color-rare-foreground: var(--rare-foreground);
+  --color-rare-ring: var(--rare-ring);
+  --color-favorite: var(--favorite);
+  --shadow-card: 0 8px 24px -12px oklch(0 0 0 / 0.8);
+  --shadow-glow: 0 10px 30px -10px oklch(0.62 0.09 55 / 0.7);
+  --shadow-rare: 0 8px 20px -8px oklch(0.72 0.15 55 / 0.6);
+  --drop-shadow-hero: 0 3px 14px oklch(0 0 0 / 0.7);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.21 0 0);
+  --foreground: oklch(0.97 0.005 90);
+  --surface: oklch(0.26 0.004 60);
+  --hero: oklch(0.76 0.09 40);
+  --chip: oklch(0.72 0.01 70);
+  --chip-foreground: oklch(0.2 0 0);
+  --card: oklch(0.97 0.006 90);
+  --card-foreground: oklch(0.24 0.01 60);
+  --popover: oklch(0.26 0.004 60);
+  --popover-foreground: oklch(0.97 0.005 90);
+  --primary: oklch(0.62 0.09 55);
+  --primary-strong: oklch(0.68 0.11 55);
+  --primary-foreground: oklch(0.98 0.005 90);
+  --secondary: oklch(0.3 0.006 60);
+  --secondary-foreground: oklch(0.97 0.005 90);
+  --muted: oklch(0.92 0.006 80);
+  --muted-foreground: oklch(0.72 0.01 70);
+  --accent: oklch(0.7 0.07 60);
+  --accent-foreground: oklch(0.2 0 0);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(0.98 0.005 90);
+  --border: oklch(0.35 0.006 60);
+  --input: oklch(0.35 0.006 60);
+  --ring: oklch(0.62 0.09 55);
+  --chip-hover: oklch(0.79 0.012 75);
+  --card-border: oklch(0.88 0.012 75);
+  --card-muted: oklch(0.45 0.01 60);
+  --card-chip: oklch(0.91 0.01 75);
+  --rare: oklch(0.77 0.14 55);
+  --rare-strong: oklch(0.72 0.16 50);
+  --rare-soft: oklch(0.91 0.06 65);
+  --rare-foreground: oklch(0.29 0.035 45);
+  --rare-ring: oklch(0.93 0.1 75);
+  --favorite: oklch(0.58 0.22 24);
+  --hero-overlay: linear-gradient(90deg, oklch(0.12 0.01 50 / 0.92) 0%, oklch(0.12 0.01 50 / 0.65) 48%, oklch(0.12 0.01 50 / 0.18) 100%);
+}
+
+.dark {
+  --background: oklch(0.21 0 0);
+  --foreground: oklch(0.97 0.005 90);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    min-width: 320px;
+  }
+
+  button,
+  a,
+  input {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@utility bg-hero-overlay {
+  background: var(--hero-overlay);
+}
+
+@utility rare-chip {
+  clip-path: polygon(3% 4%, 8% 1%, 14% 4%, 20% 1%, 27% 4%, 34% 1%, 41% 3%, 49% 1%, 57% 4%, 65% 1%, 73% 3%, 81% 1%, 88% 4%, 96% 2%, 99% 12%, 97% 22%, 100% 31%, 97% 42%, 100% 52%, 97% 62%, 100% 72%, 97% 82%, 99% 92%, 93% 99%, 84% 97%, 75% 100%, 66% 97%, 57% 100%, 48% 97%, 39% 100%, 30% 97%, 21% 100%, 12% 97%, 3% 99%, 1% 89%, 3% 78%, 0% 68%, 3% 57%, 0% 46%, 3% 35%, 0% 24%, 3% 14%);
+  padding-inline: 1.25rem;
+}
+
+@keyframes soft-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes hero-zoom {
+  from { opacity: 0.35; transform: scale(1.07); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes header-rise {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@utility site-entrance {
+  animation: header-rise 420ms ease-out both;
+}
+
+@utility hero-entrance {
+  animation: soft-rise 560ms 120ms ease-out both;
+}
+
+@utility hero-img-in {
+  animation: hero-zoom 1600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility hero-item {
+  animation: soft-rise 640ms var(--d, 0ms) cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility filters-entrance {
+  animation: soft-rise 520ms 220ms ease-out both;
+}
+
+@utility detail-entrance {
+  animation: soft-rise 520ms ease-out both;
+}
+
+@utility footer-entrance {
+  animation: soft-rise 560ms 80ms ease-out both;
+}
+
+@utility breed-card {
+  animation: soft-rise 480ms var(--card-delay, 0ms) ease-out both;
+  transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 36px -18px oklch(0 0 0 / 0.9);
+    border-color: var(--color-primary);
+  }
+}
+
+@utility animate-menu-in {
+  animation: menu-in 180ms ease-out both;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --hero-overlay: linear-gradient(0deg, oklch(0.12 0.01 50 / 0.93) 0%, oklch(0.12 0.01 50 / 0.62) 48%, oklch(0.12 0.01 50 / 0.08) 100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
